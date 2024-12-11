@@ -59,7 +59,7 @@ fun main() {
             .unzip()
 
         val frequencies = right.groupingBy { it }.eachCount()
-        return left.sumOf { frequencies.getOrDefault(it, 0) * it }
+        return left.fold(0) { acc, num -> acc + frequencies.getOrDefault(num, 0) * num }
     }
 
     // Or read a large test input from the `src/Day01_test.txt` file:
