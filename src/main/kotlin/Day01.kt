@@ -2,6 +2,8 @@ import kotlin.math.abs
 
 fun main() {
 
+    val testInput = listOf("3   4", "4   3", "2   5", "1   3", "3   9", "3   3")
+
     fun MutableList<Int>.binaryAdd(num: Int) {
         val index = this.binarySearch(num)
         if (index < 0)
@@ -62,12 +64,9 @@ fun main() {
         return left.fold(0) { acc, num -> acc + frequencies.getOrDefault(num, 0) * num }
     }
 
-    // Or read a large test input from the `src/Day01_test.txt` file:
-    val testInput = readInput("day01/day01_test").filter { it.isNotBlank() }
     check(oneGoldStar(testInput) == 11)
 
-    // Read the input from the `src/Day01.txt` file.
-    val input = readInput("day01/day01")
+    val input = readInput("day01")
     oneGoldStar(input).println()
 
     check(twoGoldStars(testInput) == 31)

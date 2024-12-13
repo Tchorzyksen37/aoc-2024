@@ -1,10 +1,8 @@
-package day02
-
-import println
-import readInput
 import kotlin.math.abs
 
 fun main() {
+
+    val testInput = listOf("7 6 4 2 1", "1 2 7 8 9", "9 7 6 2 1", "1 3 2 4 5", "8 6 4 4 1", "1 3 6 7 9")
 
     fun oneGoldStar(input: List<String>): Int {
         val listOfNumbers = input.map { it -> it.split(Regex("\\s+")).map { num -> num.toInt() } }
@@ -77,9 +75,6 @@ fun main() {
             var currentIndex = 0
             var arbitraryIndex = 0
 
-            if (!isSafe(numbers)) {
-                println("Unsafe numbers $numbers")
-            }
             while (currentIndex < numbers.size) {
                 var change = "SAFE"
                 if (++arbitraryIndex >= numbers.size) {
@@ -127,7 +122,6 @@ fun main() {
                     var left = numbers.subList(0, currentIndex)
                     var right = numbers.subList(arbitraryIndex, numbers.size)
                     if (isSafe(left + right)) {
-                        println("Possible fix at $currentIndex element ${numbers[currentIndex]}")
                         numbers.removeAt(currentIndex)
                         if (currentIndex > 0) {
                             currentIndex--
@@ -140,13 +134,11 @@ fun main() {
                     left = numbers.subList(0, currentIndex + 1)
                     right = numbers.subList(arbitraryIndex + 1, numbers.size)
                     if (isSafe(left + right)) {
-                        println("Possible fix at $arbitraryIndex element ${numbers[arbitraryIndex]}")
                         numbers.removeAt(arbitraryIndex)
                         arbitraryIndex = currentIndex
                         break
                     }
 
-                    println("Fix not possible at $currentIndex and $arbitraryIndex")
                     status = "UNSAFE"
                     break
 
@@ -166,11 +158,9 @@ fun main() {
         return count
     }
 
-
-    val testInput = readInput("day02/day02_test").filter { it.isNotBlank() }
     check(oneGoldStar(testInput) == 2)
 
-    val input = readInput("day02/day02")
+    val input = readInput("day02")
     oneGoldStar(input).println()
 
 //    val randomElements = input.asSequence().shuffled().take(10).toList()

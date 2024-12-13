@@ -1,12 +1,14 @@
 import java.math.BigInteger
 import java.security.MessageDigest
-import kotlin.io.path.Path
-import kotlin.io.path.readText
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = Path("src/$name.txt").readText().trim().lines()
+fun readInput(name: String): List<String> {
+    val resource = {}::class.java.getResource("/$name.txt")
+    require(resource != null) { "The file $name.txt was not found in src/day01.main/resources" }
+    return resource.readText().trim().lines().filter { it.isNotBlank() }
+}
 
 /**
  * Converts string to md5 hash.
