@@ -7,7 +7,7 @@ import java.security.MessageDigest
 fun readInput(name: String): List<String> {
     val resource = {}::class.java.getResource("/$name.txt")
     require(resource != null) { "The file $name.txt was not found in src/day01.main/resources" }
-    return resource.readText().trim().lines().filter { it.isNotBlank() }
+    return resource.readText().trim().lines()
 }
 
 /**
