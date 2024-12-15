@@ -2,12 +2,9 @@ plugins {
     kotlin("jvm") version "1.9.10"
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+    testImplementation("org.mockito:mockito-core:5.14.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 }
 
