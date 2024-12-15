@@ -124,6 +124,5 @@ fun main() {
     val part2TestAns = Day05.part2(testInput)
     check(part2TestAns == 123) { "Test failed, got $part2TestAns" }
     Day05.part2(input).println()
-    // Too high
 
 }
